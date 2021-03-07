@@ -28,9 +28,9 @@ function Search(): JSX.Element {
   return (
     <>
       <FormControl onSubmit={(e) => e.preventDefault()}>
-        <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
+        <InputLabel htmlFor="standard-adornment-search">Search Movies/Series</InputLabel>
         <Input
-          id="standard-adornment-password"
+          id="standard-adornment-search"
           type="text"
           value={title}
           onChange={(e: ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
