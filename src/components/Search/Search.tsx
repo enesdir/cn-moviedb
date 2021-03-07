@@ -15,7 +15,7 @@ import useSearch from '@hooks/useSearch'
 
 function Search(): JSX.Element {
   const [title, setTitle] = useState('')
-  const debouncedValue = useDebounce(title, 30000)
+  const debouncedValue = useDebounce(title, 3000)
   const [page, setPage] = useState(1)
   const { results, error, isLoading } = useSearch(debouncedValue, page)
 
