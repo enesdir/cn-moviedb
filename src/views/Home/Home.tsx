@@ -1,5 +1,4 @@
 import Search from '@components/Search'
-import Title from '@components/Title'
 import Layout from '@layout'
 
 function Home(): JSX.Element {
@@ -7,8 +6,6 @@ function Home(): JSX.Element {
     <Layout>
       <Layout.Header />
       <Layout.Content>
-        <Title>Welcome to CN-MOVIEDB</Title>
-
         <Search />
       </Layout.Content>
 
