@@ -8,7 +8,6 @@ function Home(): JSX.Element {
       <Layout.Content>
         <Search />
       </Layout.Content>
-
       <Layout.Footer />
     </Layout>
   )
