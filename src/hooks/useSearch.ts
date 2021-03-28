@@ -1,7 +1,7 @@
 import { AxiosError } from 'axios'
 import useSWR from 'swr'
 
-import searchFetcher from '@utils/searchFetcher'
+import fetcher from '@utils/fetcher'
 
 import { SearchType } from '../model/searchType'
 
@@ -12,11 +12,10 @@ type UseSearchValues = {
 }
 
 const useSearch = (phrase: string, page: number): UseSearchValues => {
-  const numPage = page.toString()
   const { data, error } = useSWR<SearchType, AxiosError>(
     () => `search/phrase=${phrase}/page=${page}`,
-    () => searchFetcher(phrase, numPage),
-    { refreshInterval: 10 }
+    () => fetcher({ s: phrase, page: page }),
+    { refreshInterval: 1000 }
   )
   return {
     results: data,

@@ -1,7 +1,7 @@
 import { AxiosError } from 'axios'
 import useSWR from 'swr'
 
-import infoFetcher from '@utils/infoFetcher'
+import fetcher from '@utils/fetcher'
 
 import { InfoType } from '../model/infoType'
 
@@ -14,7 +14,7 @@ type UseInfoValues = {
 const useEntry = (phrase: string): UseInfoValues => {
   const { data, error } = useSWR<InfoType, AxiosError>(
     () => `ByID/phrase=${phrase}`,
-    () => infoFetcher(phrase)
+    () => fetcher({ i: phrase, plot: 'full' })
   )
   return {
     result: data,
