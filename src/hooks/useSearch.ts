@@ -1,14 +1,13 @@
 import { AxiosError } from 'axios'
 import useSWR from 'swr'
 
+import { SWRHookResp } from '@typings/SWRHookResp'
 import fetcher from '@utils/fetcher'
 
 import { SearchType } from '../model/searchType'
 
-type UseSearchValues = {
+type UseSearchValues = SWRHookResp & {
   results: SearchType | undefined
-  isLoading: boolean
-  error: AxiosError<any> | undefined
 }
 
 const useSearch = (phrase: string, page: number): UseSearchValues => {
@@ -20,7 +19,7 @@ const useSearch = (phrase: string, page: number): UseSearchValues => {
   return {
     results: data,
     isLoading: !error && !data,
-    error,
+    isError: error,
   }
 }
 

@@ -50,36 +50,34 @@ function Header(): JSX.Element {
     <nav id="navbar">
       <HideOnScroll>
         <AppBar elevation={0} className={classes.appbar}>
-          <Container maxWidth="lg">
-            <Toolbar className={classes.toolbar} disableGutters>
-              <Link className={classes.logo} href="/" variant="button">
-                <Typography variant="h3" color="white">
-                  CN-MOVIEDB
-                </Typography>
-              </Link>
+          <Toolbar className={classes.toolbar} disableGutters>
+            <Link className={classes.logo} href="/" variant="button">
+              <Typography variant="h6" color="white">
+                CN-MOVIEDB
+              </Typography>
+            </Link>
 
-              <Hidden smDown implementation="css">
-                {menuItems.map((item) => (
-                  <Link
-                    className={classes.link}
-                    key={item.name}
-                    href={item.link}
-                    variant="button"
-                    color="inherit"
-                    underline="none"
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </Hidden>
+            <Hidden smDown implementation="css">
+              {menuItems.map((item) => (
+                <Link
+                  className={classes.link}
+                  key={item.name}
+                  href={item.link}
+                  variant="button"
+                  color="inherit"
+                  underline="none"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </Hidden>
 
-              <Hidden mdUp implementation="css">
-                <IconButton onClick={handleDrawerToggle} aria-label="Open Navigation">
-                  <MenuIcon fontSize="large" color="secondary" />
-                </IconButton>
-              </Hidden>
-            </Toolbar>
-          </Container>
+            <Hidden mdUp implementation="css">
+              <IconButton onClick={handleDrawerToggle} aria-label="Open Navigation">
+                <MenuIcon fontSize="large" color="secondary" />
+              </IconButton>
+            </Hidden>
+          </Toolbar>
         </AppBar>
       </HideOnScroll>
 

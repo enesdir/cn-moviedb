@@ -1,12 +1,15 @@
 import axios from './omdb'
 
+type ListType = 'movie' | 'series' | 'episode'
+type PlotType = 'short' | 'full'
+
 interface QueryProps {
   s?: string
   i?: string
   y?: number
   r?: 'json' | 'xml'
-  type?: 'movie' | 'series' | 'episode'
-  plot?: 'short' | 'full'
+  type?: ListType
+  plot?: PlotType
   page?: number
   v?: number
 }
