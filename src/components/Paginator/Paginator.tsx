@@ -1,26 +1,16 @@
-import Pagination from '@material-ui/core/Pagination'
-import { makeStyles } from '@material-ui/core/styles'
+import Box from '@mui/material/Box'
+import Pagination from '@mui/material/Pagination'
+import { useTheme } from '@mui/material/styles'
 
 import { RESULTS_PER_PAGE } from '@constants/paginator'
-const useStyles = makeStyles((theme) => ({
-  paginatorContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(4),
-    [theme.breakpoints.down('sm')]: {
-      marginBottom: theme.spacing(10),
-    },
-  },
-}))
+
 interface PaginatorProps {
   total: number
   page: number
   setPage: React.Dispatch<React.SetStateAction<number>>
 }
 function Paginator({ total, page, setPage }: PaginatorProps): JSX.Element {
-  const classes = useStyles()
+  const theme = useTheme()
   const count = Math.round(+total / RESULTS_PER_PAGE)
 
   const handlePageChange = (value: number) => {
@@ -28,7 +18,18 @@ function Paginator({ total, page, setPage }: PaginatorProps): JSX.Element {
     setPage(value)
   }
   return (
-    <div className={classes.paginatorContainer}>
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: theme.spacing(2),
+        marginBottom: theme.spacing(4),
+        [theme.breakpoints.down('sm')]: {
+          marginBottom: theme.spacing(10),
+        },
+      }}
+    >
       <Pagination
         count={count}
         page={page}
@@ -36,7 +37,7 @@ function Paginator({ total, page, setPage }: PaginatorProps): JSX.Element {
         shape="rounded"
         onChange={(_, value) => handlePageChange(value)}
       />
-    </div>
+    </Box>
   )
 }
 

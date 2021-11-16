@@ -1,10 +1,10 @@
-import { blue, red, grey } from '@material-ui/core/colors'
-import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles'
+import { blue, red, grey } from '@mui/material/colors'
+import { createTheme, responsiveFontSizes } from '@mui/material/styles'
 
 // Creates a theme
 // For more info see https://material-ui.com/customization/theming/
 const theme = responsiveFontSizes(
-  createMuiTheme({
+  createTheme({
     palette: {
       primary: {
         main: blue[500],

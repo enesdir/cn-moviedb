@@ -1,22 +1,12 @@
-import CircularProgress from '@material-ui/core/CircularProgress'
-import { makeStyles } from '@material-ui/core/styles'
+import Box from '@mui/material/Box'
+import CircularProgress from '@mui/material/CircularProgress'
 import React from 'react'
 
-const useStyles = makeStyles(() => ({
-  root: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '70vh',
-  },
-}))
-
 function Loader(): JSX.Element {
-  const classes = useStyles()
   return (
-    <div className={classes.root}>
+    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '70vh' }}>
       <CircularProgress color="secondary" />
-    </div>
+    </Box>
   )
 }
 

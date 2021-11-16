@@ -1,6 +1,9 @@
-import { Button, Grid, Paper, Typography } from '@material-ui/core'
-import Container from '@material-ui/core/Container'
-import { makeStyles } from '@material-ui/core/styles'
+import Button from '@mui/material/Button'
+import Container from '@mui/material/Container'
+import Grid from '@mui/material/Grid'
+import Paper from '@mui/material/Paper'
+import { useTheme } from '@mui/material/styles'
+import Typography from '@mui/material/Typography'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
@@ -10,21 +13,11 @@ import { HEAD_TITLE } from '@constants/seo'
 import useEntry from '@hooks/useEntry'
 import Layout from '@layout'
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(2),
-    padding: theme.spacing(2),
-    margin: 'auto',
-  },
-  button: {
-    marginTop: theme.spacing(2),
-  },
-}))
 function Info(): JSX.Element {
   const router = useRouter()
   const { tid } = router.query
   const { result, isLoading } = useEntry(tid)
-  const classes = useStyles()
+  const theme = useTheme()
 
   return (
     <Container>
@@ -42,7 +35,7 @@ function Info(): JSX.Element {
             <Layout.Header />
             <Layout.Content>
               <Button
-                className={classes.button}
+                sx={{ marginTop: theme.spacing(2) }}
                 variant="contained"
                 color="primary"
                 onClick={() => {
@@ -51,7 +44,7 @@ function Info(): JSX.Element {
               >
                 Back
               </Button>
-              <Paper className={classes.paper} elevation={3}>
+              <Paper sx={{ marginTop: theme.spacing(2), padding: theme.spacing(2), margin: 'auto' }} elevation={3}>
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={6} md={5}>
                     <div style={{ position: 'relative' }}>

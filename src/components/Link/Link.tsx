@@ -1,9 +1,12 @@
-/* eslint-disable jsx-a11y/anchor-has-content */
-import MuiLink, { LinkProps as MuiLinkProps } from '@material-ui/core/Link'
+import MuiLink, { LinkProps as MuiLinkProps } from '@mui/material/Link'
+import { styled } from '@mui/material/styles'
 import clsx from 'clsx'
 import NextLink, { LinkProps as NextLinkProps } from 'next/link'
 import { useRouter } from 'next/router'
 import * as React from 'react'
+
+// Add support for the sx prop for consistency with the other branches.
+const Anchor = styled('a')({})
 
 interface NextLinkComposedProps
   extends Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'>,
@@ -17,7 +20,7 @@ export const NextLinkComposed = React.forwardRef<HTMLAnchorElement, NextLinkComp
   props,
   ref
 ) {
-  const { to, linkAs, href, replace, scroll, passHref, shallow, prefetch, locale, ...other } = props
+  const { to, linkAs, href, replace, scroll, shallow, prefetch, locale, ...other } = props
 
   return (
     <NextLink
@@ -27,10 +30,10 @@ export const NextLinkComposed = React.forwardRef<HTMLAnchorElement, NextLinkComp
       replace={replace}
       scroll={scroll}
       shallow={shallow}
-      passHref={passHref}
+      passHref
       locale={locale}
     >
-      <a ref={ref} {...other} />
+      <Anchor ref={ref} {...other} />
     </NextLink>
   )
 })
@@ -66,14 +69,14 @@ const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(function Link(props,
 
   if (isExternal) {
     if (noLinkStyle) {
-      return <a className={className} href={href as string} ref={ref as any} {...other} />
+      return <Anchor className={className} href={href} ref={ref} {...other} />
     }
 
-    return <MuiLink className={className} href={href as string} ref={ref} {...other} />
+    return <MuiLink className={className} href={href} ref={ref} {...other} />
   }
 
   if (noLinkStyle) {
-    return <NextLinkComposed className={className} ref={ref as any} to={href} {...other} />
+    return <NextLinkComposed className={className} ref={ref} to={href} {...other} />
   }
 
   return <MuiLink component={NextLinkComposed} linkAs={linkAs} className={className} ref={ref} to={href} {...other} />

@@ -1,27 +1,18 @@
-import Box from '@material-ui/core/Box'
-import Fab from '@material-ui/core/Fab'
-import { makeStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
+import Box from '@mui/material/Box'
+import Fab from '@mui/material/Fab'
+import { useTheme } from '@mui/material/styles'
+import Typography from '@mui/material/Typography'
 
 import NextLinkComposed from '@components/Link'
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    padding: theme.spacing(5, 0, 5, 0),
-  },
-  fab: {
-    marginBottom: theme.spacing(2),
-  },
-}))
-
-function Footer(): JSX.Element {
-  const classes = useStyles()
+function Footer() {
+  const theme = useTheme()
   return (
-    <footer className={classes.root}>
+    <Box component="footer" sx={{ padding: theme.spacing(5, 0, 5, 0) }}>
       <Box display="flex" flexDirection="column" alignItems="center">
         <Fab
-          className={classes.fab}
+          sx={{ marginBottom: theme.spacing(2) }}
           color="secondary"
           size="small"
           href="/"
@@ -36,7 +27,7 @@ function Footer(): JSX.Element {
           Enes ESEN ©2021
         </Typography>
       </Box>
-    </footer>
+    </Box>
   )
 }
 

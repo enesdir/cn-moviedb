@@ -1,4 +1,4 @@
-import Typography from '@material-ui/core/Typography'
+import Typography from '@mui/material/Typography'
 
 import { TRenderProps } from '@typings/commonPropTypes'
 

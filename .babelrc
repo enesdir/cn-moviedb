@@ -6,10 +6,8 @@
       {
         "root": ["./"],
         "alias": {
-          "@assets": ["./src/assets"],
           "@components": ["./src/components"],
           "@constants": ["./src/constants"],
-          "@context": ["./src/context"],
           "@hooks": ["./src/hooks"],
           "@layout": ["./src/layout/index.ts"],
           "@model": ["./src/model"],

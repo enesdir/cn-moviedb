@@ -1,5 +1,4 @@
-import { Grid } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import Grid from '@mui/material/Grid'
 
 import CardItem from '@components/CardItem'
 import Loader from '@components/Loader'
@@ -8,16 +7,10 @@ interface CardGridProps {
   results: EntryType[] | undefined
   isLoading?: boolean
 }
-const useStyles = makeStyles(() => ({
-  root: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
-}))
+
 function CardGrid({ results, isLoading }: CardGridProps): JSX.Element {
-  const classes = useStyles()
   return (
-    <Grid container spacing={3} className={classes.root}>
+    <Grid container spacing={3} sx={{ display: 'flex', justifyContent: 'center' }}>
       {results &&
         results.map((result, index) => (
           <Grid item lg={3} sm={6} md={4} xs={12} key={`result-${index}`}>

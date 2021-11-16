@@ -1,28 +1,15 @@
-import Divider from '@material-ui/core/Divider'
-import Drawer from '@material-ui/core/Drawer'
-import IconButton from '@material-ui/core/IconButton'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
-import { makeStyles } from '@material-ui/core/styles'
-import CloseIcon from '@material-ui/icons/Close'
+import CloseIcon from '@mui/icons-material/Close'
+import Box from '@mui/material/Box'
+import Divider from '@mui/material/Divider'
+import Drawer from '@mui/material/Drawer'
+import IconButton from '@mui/material/IconButton'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import ListItemIcon from '@mui/material/ListItemIcon'
+import ListItemText from '@mui/material/ListItemText'
+import { useTheme } from '@mui/material/styles'
 
 import Link from '@components/Link'
-
-const useStyles = makeStyles((theme) => ({
-  drawerHeader: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-  },
-  listItemIcon: {
-    minWidth: '56px',
-  },
-}))
 
 interface MenuItems {
   link: string
@@ -38,15 +25,24 @@ interface NavigationDrawerProps {
 
 function NavigationDrawer(props: NavigationDrawerProps): JSX.Element {
   const { menuItems, open, onClose } = props
-  const classes = useStyles()
+  const theme = useTheme()
 
   return (
     <Drawer variant="temporary" anchor="right" open={open} onClose={onClose}>
-      <div className={classes.drawerHeader}>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'flex-end',
+          alignItems: 'center',
+          padding: theme.spacing(0, 1),
+          // necessary for content to be below app bar
+          ...theme.mixins.toolbar,
+        }}
+      >
         <IconButton onClick={onClose}>
           <CloseIcon fontSize="large" color="secondary" />
         </IconButton>
-      </div>
+      </Box>
       <Divider />
       <List>
         {menuItems.map((item) => (
@@ -56,7 +52,7 @@ function NavigationDrawer(props: NavigationDrawerProps): JSX.Element {
             key={item.name}
             {...{ component: Link, href: item.link, noLinkStyle: true }}
           >
-            <ListItemIcon className={classes.listItemIcon}>{item.icon}</ListItemIcon>
+            <ListItemIcon sx={{ minWidth: '56px' }}>{item.icon}</ListItemIcon>
             <ListItemText primary={item.name} />
           </ListItem>
         ))}
