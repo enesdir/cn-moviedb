@@ -53,8 +53,7 @@ yarn
 - `start` - start serving production build
 - `type-check` - run Typescript checks
 - `lint` - run lint checks
-- `test` - start all tests
-- `test-all` - runs lint, type checking, and tests
+- `test-all` - runs lint and type checking
 - `analyze` - analyze production build with Webpack Bundle Analyzer
 
 ## Project Structure
@@ -68,7 +67,6 @@ src/
 +-- layout/
 +-- pages/
 +-- styles/
-+-- tests/
 +-- typings/
 +-- utils/
 +-- views/
@@ -90,8 +88,6 @@ src/
 
 `styles/` - everything related to styling and theming
 
-`tests/` - everything related to tests
-
 `typings/` - type declarations for Typescript
 
 `utils/` - helper functions
@@ -103,11 +99,3 @@ src/
 Q: What is the difference between pages and views?
 
 A: Pages define and generate route locations, get initial or static data, and optionally configure the head element. Views define the unique structure of components and spread data among children. Page components may render different views conditionally.
-
-Q: How to change import aliases?
-
-A: Take a look at `tconfig.json`, `.babelrc`, and `jest.config.js`.
-
-Q: I don't like CSS modules. Can I use something else?
-
-A: Absolutely! CSS modules are only used for the demo purposes as the easiest styling method in Next.js. You may want to browse <a href="https://github.com/vercel/next.js/tree/canary/examples">Next.js examples</a> and see how to add your desired library.
