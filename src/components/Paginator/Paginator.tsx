@@ -4,12 +4,12 @@ import { useTheme } from '@mui/material/styles'
 
 import { RESULTS_PER_PAGE } from '@constants/paginator'
 
-interface PaginatorProps {
+export interface PaginatorProps {
   total: number
   page: number
   setPage: React.Dispatch<React.SetStateAction<number>>
 }
-function Paginator({ total, page, setPage }: PaginatorProps): JSX.Element {
+export function Paginator({ total, page, setPage }: PaginatorProps): JSX.Element {
   const theme = useTheme()
   const count = Math.round(+total / RESULTS_PER_PAGE)
 
@@ -40,5 +40,3 @@ function Paginator({ total, page, setPage }: PaginatorProps): JSX.Element {
     </Box>
   )
 }
-
-export default Paginator

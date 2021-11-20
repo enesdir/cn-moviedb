@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material'
 import Grid from '@mui/material/Grid'
 
 import CardItem from '@components/CardItem'
@@ -6,18 +7,31 @@ import { EntryType } from '@model/entryType'
 interface CardGridProps {
   results: EntryType[] | undefined
   isLoading?: boolean
+  errorMessage?: string
 }
 
-function CardGrid({ results, isLoading }: CardGridProps): JSX.Element {
-  return (
-    <Grid container spacing={3} sx={{ display: 'flex', justifyContent: 'center' }}>
-      {results &&
-        results.map((result, index) => (
+function CardGrid({ results, isLoading, errorMessage }: CardGridProps): JSX.Element {
+  const retrievedMovies =
+    isLoading && !errorMessage ? (
+      <>
+        <Loader />
+      </>
+    ) : errorMessage ? (
+      <Typography color="red">{errorMessage}</Typography>
+    ) : !errorMessage ? (
+      <>
+        {results?.map((result, index) => (
           <Grid item lg={3} sm={6} md={4} xs={12} key={`result-${index}`}>
             <CardItem Title={result.Title} Poster={result.Poster} Year={result.Year} imdbID={result.imdbID} />
           </Grid>
         ))}
-      {isLoading && <Loader />}
+      </>
+    ) : (
+      { errorMessage }
+    )
+  return (
+    <Grid container spacing={3} sx={{ display: 'flex', justifyContent: 'center' }}>
+      {retrievedMovies}
     </Grid>
   )
 }

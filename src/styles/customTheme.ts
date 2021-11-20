@@ -6,17 +6,8 @@ import { createTheme, responsiveFontSizes } from '@mui/material/styles'
 const theme = responsiveFontSizes(
   createTheme({
     palette: {
-      primary: {
-        main: blue[500],
-      },
-      secondary: {
-        main: blue[700],
-      },
       error: {
         main: red.A400,
-      },
-      background: {
-        default: grey[100],
       },
     },
     typography: {

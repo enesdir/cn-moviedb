@@ -1,7 +1,7 @@
 import HomeIcon from '@mui/icons-material/Home'
 import MenuIcon from '@mui/icons-material/Menu'
 import AppBar from '@mui/material/AppBar'
-import Hidden from '@mui/material/Hidden'
+import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import { useTheme } from '@mui/material/styles'
 import Toolbar from '@mui/material/Toolbar'
@@ -12,8 +12,12 @@ import Link from '@components/Link'
 
 import HideOnScroll from './HideOnScroll'
 import NavigationDrawer from './NavigationDrawer'
-
-function Header(): JSX.Element {
+import { Search, SearchProps } from './Search'
+interface HeaderProps {
+  title?: string
+  search?: SearchProps
+}
+function Header({ title, search }): JSX.Element {
   const theme = useTheme()
 
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -29,42 +33,37 @@ function Header(): JSX.Element {
     },
   ]
   return (
-    <nav id="navbar">
+    <Box sx={{ flexGrow: 1 }}>
       <HideOnScroll>
-        <AppBar elevation={0} sx={{ backgroundColor: theme.palette.grey[900], color: theme.palette.common.white }}>
+        <AppBar elevation={0}>
           <Toolbar sx={{ display: 'flex' }} disableGutters>
+            <IconButton
+              onClick={handleDrawerToggle}
+              aria-label="Open Navigation"
+              size="large"
+              edge="start"
+              color="inherit"
+              sx={{ mr: 5 }}
+            >
+              <MenuIcon fontSize="large" />
+            </IconButton>
+
             <Link sx={{ textDecoration: 'none !important', flexGrow: 1 }} href="/" variant="button">
-              <Typography variant="h6" color="white">
+              <Typography
+                variant="h6"
+                noWrap
+                component="div"
+                sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+              >
                 CN-MOVIEDB
               </Typography>
             </Link>
-
-            <Hidden smDown implementation="css">
-              {menuItems.map((item) => (
-                <Link
-                  sx={{ padding: '12px 15px' }}
-                  key={item.name}
-                  href={item.link}
-                  variant="button"
-                  color="inherit"
-                  underline="none"
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </Hidden>
-
-            <Hidden mdUp implementation="css">
-              <IconButton onClick={handleDrawerToggle} aria-label="Open Navigation">
-                <MenuIcon fontSize="large" color="secondary" />
-              </IconButton>
-            </Hidden>
+            {title ?? <Search {...search} />}
           </Toolbar>
         </AppBar>
       </HideOnScroll>
-
       <NavigationDrawer menuItems={menuItems} open={mobileOpen} onClose={handleDrawerToggle} />
-    </nav>
+    </Box>
   )
 }
 
