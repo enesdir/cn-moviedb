@@ -2,7 +2,7 @@ import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import { useTheme } from '@mui/material/styles'
 
-import { TRenderProps } from '@typings/commonPropTypes'
+import { TRenderProps } from '@/typings/commonPropTypes'
 
 function Content({ children }: TRenderProps): JSX.Element {
   const theme = useTheme()

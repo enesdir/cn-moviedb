@@ -1,6 +1,6 @@
 import Paper from '@mui/material/Paper'
 
-import Title from '@components/Title'
+import Title from '@/components/Title'
 
 function Hero(): JSX.Element {
   return (

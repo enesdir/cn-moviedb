@@ -8,15 +8,7 @@ interface CardItemMediaProps {
 function Title({ poster, title }: CardItemMediaProps): JSX.Element {
   const onMediaFallback = (event) => (event.target.src = '/404.png')
   return (
-    <CardMedia
-      component="img"
-      width="30px"
-      height="300px"
-      src={poster}
-      title={title}
-      onError={onMediaFallback}
-      alt={title}
-    />
+    <CardMedia component="img" sx={{ height: 400 }} src={poster} title={title} onError={onMediaFallback} alt={title} />
   )
 }
 

@@ -9,12 +9,12 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 
-import CardItemMedia from '@components/CardItemMedia'
-import Loader from '@components/Loader'
-import { HEAD_TITLE } from '@constants/seo'
-import Layout from '@layout'
-import { SearchType } from '@model/searchType'
-import fetcher from '@utils/fetcher'
+import CardItemMedia from '@/components/CardItemMedia'
+import Loader from '@/components/Loader'
+import { HEAD_TITLE } from '@/constants/seo'
+import Layout from '@/layout'
+import { SearchType } from '@/model/searchType'
+import fetcher from '@/utils/fetcher'
 
 export default function Detail({ tid, fallbackData }): JSX.Element {
   const router = useRouter()

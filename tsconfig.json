@@ -1,14 +1,10 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -17,62 +13,14 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "allowSyntheticDefaultImports": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "removeComments": false,
-    "preserveConstEnums": true,
-    "sourceMap": true,
     "baseUrl": ".",
     "paths": {
-      "@assets/*": [
-        "./src/assets/*"
-      ],
-      "@components/*": [
-        "./src/components/*"
-      ],
-      "@constants/*": [
-        "./src/constants/*"
-      ],
-      "@context/*": [
-        "./src/context/*"
-      ],
-      "@hooks/*": [
-        "./src/hooks/*"
-      ],
-      "@layout": [
-        "src/layout/index.ts"
-      ],
-      "@model/*": [
-        "./src/model/*"
-      ],
-      "@styles/*": [
-        "./src/styles/*"
-      ],
-      "@tests/*": [
-        "./src/tests/*"
-      ],
-      "@typings/*": [
-        "./src/typings/*"
-      ],
-      "@utils/*": [
-        "./src/utils/*"
-      ],
-      "@views/*": [
-        "src/views/*"
-      ]
+      "@/*": ["./src/*"],
+      "~/*": ["./public/*"]
     },
     "incremental": true
   },
-  "exclude": [
-    "node_modules",
-    ".next",
-    "out"
-  ],
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.js"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"],
+  "moduleResolution": ["node_modules", ".next", "node"]
 }

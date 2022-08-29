@@ -2,7 +2,7 @@ import Box from '@mui/material/Box'
 import Pagination from '@mui/material/Pagination'
 import { useTheme } from '@mui/material/styles'
 
-import { RESULTS_PER_PAGE } from '@constants/paginator'
+import { RESULTS_PER_PAGE } from '@/constants/paginator'
 
 export interface PaginatorProps {
   total: number

@@ -4,7 +4,7 @@ import Fab from '@mui/material/Fab'
 import { useTheme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 
-import NextLinkComposed from '@components/Link'
+import NextLinkComposed from '@/components/Link'
 
 function Footer() {
   const theme = useTheme()

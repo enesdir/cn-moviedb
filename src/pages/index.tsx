@@ -5,13 +5,13 @@ import Head from 'next/head'
 import { useState } from 'react'
 import useSWR from 'swr'
 
-import CardGrid from '@components/CardGrid'
-import { Paginator } from '@components/Paginator'
-import { HEAD_TITLE } from '@constants/seo'
+import CardGrid from '@/components/CardGrid'
+import { Paginator } from '@/components/Paginator'
+import { HEAD_TITLE } from '@/constants/seo'
 // import useDebounce from '@hooks/useDebounce'
-import Layout from '@layout'
-import { SearchType } from '@model/searchType'
-import fetcher from '@utils/fetcher'
+import Layout from '@/layout'
+import { SearchType } from '@/model/searchType'
+import fetcher from '@/utils/fetcher'
 
 export default function HomePage({ fallbackData }): JSX.Element {
   const [title, setTitle] = useState('star')

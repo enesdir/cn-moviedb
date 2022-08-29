@@ -4,13 +4,14 @@ import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 import React from 'react'
 
-import CardItemMedia from '@components/CardItemMedia'
-import Link from '@components/Link'
-import { EntryType } from '@model/entryType'
+import CardItemMedia from '@/components/CardItemMedia'
+import Link from '@/components/Link'
+import { EntryType } from '@/model/entryType'
+import { Badge, Chip } from '@mui/material'
 
 function CardItem(result: EntryType): JSX.Element {
   return (
-    <Card>
+    <Card sx={{ borderRadius: 6, maxHeight: 560 }}>
       <CardActionArea>
         <Link
           href={`/title/${result.imdbID}`}
@@ -22,13 +23,11 @@ function CardItem(result: EntryType): JSX.Element {
           <CardItemMedia poster={result.Poster} title={result.Title} />
         </Link>
 
-        <CardContent>
-          <Typography variant="h6" component="h3" gutterBottom>
+        <CardContent sx={{ height: 120 }}>
+          <Typography variant="subtitle2" component="h6" gutterBottom>
             {result.Title}
           </Typography>
-          <Typography variant="subtitle2" component="p">
-            Year : {result.Year}
-          </Typography>
+          <Chip label={result.Year} sx={{ bottom: 10, position: 'absolute' }} />
         </CardContent>
       </CardActionArea>
     </Card>

@@ -8,7 +8,7 @@ import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import { useState } from 'react'
 
-import Link from '@components/Link'
+import Link from '@/components/Link'
 
 import HideOnScroll from './HideOnScroll'
 import NavigationDrawer from './NavigationDrawer'

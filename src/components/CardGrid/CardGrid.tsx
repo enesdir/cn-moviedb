@@ -1,9 +1,9 @@
 import { Typography } from '@mui/material'
 import Grid from '@mui/material/Grid'
 
-import CardItem from '@components/CardItem'
-import Loader from '@components/Loader'
-import { EntryType } from '@model/entryType'
+import CardItem from '@/components/CardItem'
+import Loader from '@/components/Loader'
+import type { EntryType } from '@/model/entryType'
 interface CardGridProps {
   results: EntryType[] | undefined
   isLoading?: boolean
@@ -21,7 +21,7 @@ function CardGrid({ results, isLoading, errorMessage }: CardGridProps): JSX.Elem
     ) : !errorMessage ? (
       <>
         {results?.map((result, index) => (
-          <Grid item lg={3} sm={6} md={4} xs={12} key={`result-${index}`}>
+          <Grid item lg={3} sm={4} md={6} xs={12} key={`result-${index}`}>
             <CardItem Title={result.Title} Poster={result.Poster} Year={result.Year} imdbID={result.imdbID} />
           </Grid>
         ))}

@@ -9,7 +9,7 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import { useTheme } from '@mui/material/styles'
 
-import Link from '@components/Link'
+import Link from '@/components/Link'
 
 interface MenuItems {
   link: string
