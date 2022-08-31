@@ -28,7 +28,7 @@ function NavigationDrawer(props: NavigationDrawerProps): JSX.Element {
   const theme = useTheme()
 
   return (
-    <Drawer variant="temporary" anchor="right" open={open} onClose={onClose}>
+    <Drawer anchor="left" open={open} onClose={onClose}>
       <Box
         sx={{
           display: 'flex',
@@ -52,7 +52,7 @@ function NavigationDrawer(props: NavigationDrawerProps): JSX.Element {
             key={item.name}
             {...{ component: Link, href: item.link, noLinkStyle: true }}
           >
-            <ListItemIcon sx={{ minWidth: '56px' }}>{item.icon}</ListItemIcon>
+            <ListItemIcon>{item.icon}</ListItemIcon>
             <ListItemText primary={item.name} />
           </ListItem>
         ))}

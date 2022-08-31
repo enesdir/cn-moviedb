@@ -6,18 +6,21 @@ import IconButton from '@mui/material/IconButton'
 import { useTheme } from '@mui/material/styles'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
+import { margin } from '@mui/system'
 import { useState } from 'react'
 
 import Link from '@/components/Link'
 
 import HideOnScroll from './HideOnScroll'
+import Logo from './Logo'
 import NavigationDrawer from './NavigationDrawer'
 import { Search, SearchProps } from './Search'
+import ToggleColorMode from './ToggleColorMode'
 interface HeaderProps {
   title?: string
   search?: SearchProps
 }
-function Header({ title, search }): JSX.Element {
+function Header({ title, search }: HeaderProps): JSX.Element {
   const theme = useTheme()
 
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -35,30 +38,31 @@ function Header({ title, search }): JSX.Element {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <HideOnScroll>
-        <AppBar elevation={0}>
-          <Toolbar sx={{ display: 'flex' }} disableGutters>
+        <AppBar
+          sx={{
+            fontFamily: 'Montserrat',
+            width: '100%',
+            transition: 'all 0.5s',
+            backgroundColor: theme.palette.mode === 'dark' ? '#000' : '#eaeaea',
+            color: theme.palette.mode === 'dark' ? '#fff' : '#000',
+          }}
+        >
+          <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignContent: 'center' }}>
             <IconButton
               onClick={handleDrawerToggle}
               aria-label="Open Navigation"
               size="large"
               edge="start"
               color="inherit"
-              sx={{ mr: 5 }}
+              sx={{ display: { xs: 'flex', sm: 'none' } }}
             >
               <MenuIcon fontSize="large" />
             </IconButton>
 
-            <Link sx={{ textDecoration: 'none !important', flexGrow: 1 }} href="/" variant="button">
-              <Typography
-                variant="h6"
-                noWrap
-                component="div"
-                sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-              >
-                CN-MOVIEDB
-              </Typography>
-            </Link>
+            <Logo title="CN-MOVIEDB" />
             {title ?? <Search {...search} />}
+
+            <ToggleColorMode />
           </Toolbar>
         </AppBar>
       </HideOnScroll>
