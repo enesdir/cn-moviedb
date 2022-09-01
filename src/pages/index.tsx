@@ -1,27 +1,25 @@
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import { AxiosError } from 'axios'
 import Head from 'next/head'
 import { useState } from 'react'
-import useSWR from 'swr'
 
+import { fetchSearchResult, useGetSearchResult } from '@/api/fetchSearchResult'
 import CardGrid from '@/components/CardGrid'
 import { Paginator } from '@/components/Paginator'
 import { HEAD_TITLE } from '@/constants/seo'
-// import useDebounce from '@hooks/useDebounce'
 import Layout from '@/layout'
-import { SearchType } from '@/model/searchType'
-import fetcher from '@/utils/fetcher'
+import type { SearchResponseType } from '@/types/searchResponseType'
 
-export default function HomePage({ fallbackData }): JSX.Element {
+type HomePageProps = {
+  fallbackData: SearchResponseType
+}
+
+export default function HomePage({ fallbackData }: HomePageProps): JSX.Element {
   const [title, setTitle] = useState('star')
   const [page, setPage] = useState(1)
-  const { data, error, isLoading } = useSWR<SearchType, AxiosError>(
-    () => `search/phrase=${title}/page=${page}`,
-    () => fetcher({ s: title, page: page }),
-    { refreshInterval: 0, fallbackData }
-  )
+  const { data, isError, isLoading } = useGetSearchResult({ s: title, page: page }, fallbackData, !!title)
   const isResponseEmpty = title === '' && data?.Response === 'False'
+  const error = isError ? 'Something wrong' : null
   return (
     <>
       <Head>
@@ -38,7 +36,7 @@ export default function HomePage({ fallbackData }): JSX.Element {
               </Typography>
             </Box>
           )}
-          <CardGrid results={data?.Search} isLoading={isLoading} errorMessage={error?.message} />
+          <CardGrid results={data?.Search} isLoading={isLoading} errorMessage={error} />
           {data?.Search && <Paginator page={page} setPage={setPage} total={parseInt(data.totalResults)} />}
         </Layout.Content>
         <Layout.Footer />
@@ -48,6 +46,11 @@ export default function HomePage({ fallbackData }): JSX.Element {
 }
 
 export async function getServerSideProps() {
-  const data = await fetcher({ s: 'star', page: 1 })
-  return { props: { fallbackData: data } }
+  const fallbackData = await fetchSearchResult({ s: 'star', page: 1 })
+
+  return {
+    props: {
+      fallbackData,
+    },
+  }
 }

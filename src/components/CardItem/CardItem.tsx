@@ -1,3 +1,4 @@
+import { Chip } from '@mui/material'
 import Card from '@mui/material/Card'
 import CardActionArea from '@mui/material/CardActionArea'
 import CardContent from '@mui/material/CardContent'
@@ -6,8 +7,7 @@ import React from 'react'
 
 import CardItemMedia from '@/components/CardItemMedia'
 import Link from '@/components/Link'
-import { EntryType } from '@/model/entryType'
-import { Badge, Chip } from '@mui/material'
+import { EntryType } from '@/types/entryType'
 
 function CardItem(result: EntryType): JSX.Element {
   return (

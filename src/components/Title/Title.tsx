@@ -1,6 +1,6 @@
 import Typography from '@mui/material/Typography'
 
-import { TRenderProps } from '@/typings/commonPropTypes'
+import { TRenderProps } from '@/types/commonPropTypes'
 
 function Title({ children }: TRenderProps): JSX.Element {
   return (

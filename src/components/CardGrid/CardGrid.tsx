@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid'
 
 import CardItem from '@/components/CardItem'
 import Loader from '@/components/Loader'
-import type { EntryType } from '@/model/entryType'
+import type { EntryType } from '@/types/entryType'
 interface CardGridProps {
   results: EntryType[] | undefined
   isLoading?: boolean

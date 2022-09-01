@@ -3,7 +3,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import * as React from 'react'
 
-import type { TRenderProps } from '@/typings/commonPropTypes'
+import type { TRenderProps } from '@/types/commonPropTypes'
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} })
 
